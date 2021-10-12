@@ -1,0 +1,161 @@
+<title>Emulatorjs Play</title>
+<link rel="icon" type="image/png" href="emulator/img/icon.png"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/main.css">
+<script src="/js/main.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<div id="preloader"></div>
+  <style>
+.containerr { 
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 99999999;
+  opacity: 0;
+  transition: opacity .1s ease-in-out;
+  -moz-transition: opacity .1s ease-in-out;
+  -webkit-transition: opacity .1s ease-in-out;
+}
+
+.vertical--center {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 180px;
+}
+.a{
+    left: 60px !important;
+    position: fixed;
+}
+.bot {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 50%;
+  background-color: #ff1100;
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+.containerr:hover {
+  opacity: 1.0;
+  transition: opacity .1s ease-in-out;
+  -moz-transition: opacity .1s ease-in-out;
+  -webkit-transition: opacity .1s ease-in-out;
+}
+#helppp{
+    visibility: hidden;
+    transition: opacity .1s ease-in-out;
+  -moz-transition: opacity .1s ease-in-out;
+  -webkit-transition: opacity .1s ease-in-out;
+}
+</style>
+<div class="containerr">
+    <div id="hov" class="vertical--center">
+    <button id="helpp" onclick="$('#myModal').modal();" class="bot"><i class="fa fa-share"></i></button>
+    </div>
+</div>
+<div style="width:100%;hight:100%;">
+        <div id="game"></div>
+      </div>
+<script type="text/javascript">
+let params = new URLSearchParams(location.search);
+    EJS_player = '#game';
+    if(params.get('data') === null){
+        alert("Error!: Game is not found!");
+    }else{
+        var romdata = "https://allancoding.000webhostapp.com/app/emulatorjs/download.php?url="+params.get('data');
+     EJS_gameUrl = romdata; // Url to Game rom
+    }
+    if(params.get('id') === null){
+        alert("Warning!: Id is not set Netplay will not work!");
+    }else{
+     EJS_gameID = params.get('id'); // ID in your website, required for netplay.
+    }
+    if(params.get('core') === null){
+        alert("Error!: Core is not set!");
+    }else{
+     EJS_core = params.get('core');
+    }
+    EJS_mouse = false; // SNES Mouse
+    EJS_multitap = false; // SNES Multitap
+    EJS_pathtodata = 'emulator/';
+    if(params.get('name') === null){
+    }else{
+     document.title = "Emulatorjs | " + params.get('name');
+     EJS_gameName = params.get('name');
+    }
+    if(params.get('img') === null || params.get('iurl') == 'false'){
+        var sheet = window.document.styleSheets[0];
+sheet.insertRule('.backg{ background-image :url("emulator/img/icon.png") !important; }', sheet.cssRules.length);
+    }else if(params.get('iurl') == 'true'){
+     var sheet = window.document.styleSheets[0];
+sheet.insertRule('.backg{ background-image :url("'+params.get('img')+'") !important; }', sheet.cssRules.length);
+    }else{
+         var w = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+var h = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
+     var sheet = window.document.styleSheets[0];
+sheet.insertRule('.backg{ background-image :url("https://via.placeholder.com/'+w+"x"+h+".png/000000/FFFFFF/?text="+params.get('name')+'") !important; }', sheet.cssRules.length);
+    }
+$(window).on( "load", function() {
+    if(params.get('button') === null){
+        alert("Warning! Button name not found!");
+    }else{
+   document.getElementById("start").innerHTML = params.get('button');
+    }
+});
+</script>
+<script src="emulator/loader.js"></script>
+<style>
+.ejs--73f9b4e94a7a1fe74e11107d5ab2ef{
+    background-color: #ff1100 !important;
+    border-width:1px !important;
+    border-color:black !important;  
+    border-style:solid !important;
+}
+.backg{
+    background-color: transparent !important;
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+</style>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+<div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">This is Emulatorjs!</h2>
+        </div>
+        <div class="modal-body">
+            <h4><a id="link" target="_blank" href="#">Share this link to play with frends with the net play by creating a room.</a></h4>
+            <h5>Just click (START GAME) to start it.</h5>
+          <p>Have fun!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript">
+$( function() {
+    $('#myModal').modal();
+    document.getElementById("link").href = window.location.href;
+  } );
+</script>
