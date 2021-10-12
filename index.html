@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/videopopup.js"></script>
+<link rel="stylesheet" type="text/css" href="css/videopopup.css" media="screen" />
 <link rel="stylesheet" href="css/main.css">
 <script src="js/main.js"></script>
 <div id="preloader"></div>
@@ -175,8 +177,16 @@ button:hover {
     <span class="step1 finish"></span>
     <span class="step1 finish"></span>
     <span class="step1 active"></span>
+    <a href="javascript:void(0)" id="video1">Tutorial Video!</a>
   </div>
 </form>
+  <div style="display: none;" id="vidBox">
+        <div id="videCont">
+		<video autoplay id="v1" controls>
+            <source src="files/emulatorjs.mp4" type="video/mp4"/>
+        </video>
+         </div>
+        </div>
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
@@ -308,6 +318,14 @@ function startprun(){
 }
 localStorage.removeItem("data");
 </script>
-
+$(function () {
+  $('#vidBox').show();
+               $('#vidBox').VideoPopUp({
+                	backgroundColor: "#17212a",
+                	opener: "video1",
+                    maxweight: "340",
+                    idvideo: "v1"
+                });
+            });
 </div>
 </html>
