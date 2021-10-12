@@ -155,7 +155,9 @@ button:hover {
     <span class="step"></span>
     <span class="step"></span>
     <!--<span class="step1"></span>-->
- <a href="javascript:void(0)" id="video1">Tutorial Video!</a>
+  </div>
+<div style="text-align:center;margin-top:5px;">
+    <a href="javascript:void(0)" id="video1">Tutorial Video!</a>
   </div>
 </form>
 <form style="display: none;" id="regForm1">
@@ -178,6 +180,8 @@ button:hover {
     <span class="step1 finish"></span>
     <span class="step1 finish"></span>
     <span class="step1 active"></span>
+  </div>
+<div style="text-align:center;margin-top:5px;">
     <a href="javascript:void(0)" id="video2">Tutorial Video!</a>
   </div>
 </form>
@@ -318,7 +322,6 @@ function startprun(){
     document.getElementById("urlf").href = url;
 }
 localStorage.removeItem("data");
-</script>
 $(function () {
   $('#vidBox').show();
                $('#vidBox').VideoPopUp({
@@ -329,5 +332,6 @@ $(function () {
 	pausevideo:true
                 });
             });
+	</script>
 </div>
 </html>
