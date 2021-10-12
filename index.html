@@ -178,7 +178,7 @@ button:hover {
     <span class="step1 finish"></span>
     <span class="step1 finish"></span>
     <span class="step1 active"></span>
-    <a href="javascript:void(0)" id="video1">Tutorial Video!</a>
+    <a href="javascript:void(0)" id="video2">Tutorial Video!</a>
   </div>
 </form>
   <div style="display: none;" id="vidBox">
@@ -323,9 +323,10 @@ $(function () {
   $('#vidBox').show();
                $('#vidBox').VideoPopUp({
                 	backgroundColor: "#17212a",
-                	opener: "video1",
+                	opener: "video1 video2",
                     maxweight: "340",
-                    idvideo: "v1"
+                    idvideo: "v1",
+	pausevideo:true
                 });
             });
 </div>
