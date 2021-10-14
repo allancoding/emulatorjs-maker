@@ -68,9 +68,12 @@ let params = new URLSearchParams(location.search);
     EJS_player = '#game';
     if(params.get('data') === null){
         alert("Error!: Game is not found!");
-    }else{
+    }else if(params.get('idata') === null){
         var romdata = "https://allancoding.000webhostapp.com/app/emulatorjs/download.php?url="+params.get('data');
      EJS_gameUrl = romdata; // Url to Game rom
+    }else{
+      var romdata1 = "https://alniles.github.io/emulatorjs/files/"+params.get('data');
+     EJS_gameUrl = romdata1; // Url to Game rom
     }
     if(params.get('id') === null){
         alert("Warning!: Id is not set Netplay will not work!");
