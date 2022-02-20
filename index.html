@@ -185,13 +185,6 @@ button:hover {
     <a href="javascript:void(0)" id="video2">Tutorial Video!</a>
   </div>
 </form>
-  <div style="display: none;" id="vidBox">
-        <div id="videCont">
-		<video autoplay id="v1" controls>
-            <source src="files/emulatorjs.mp4" type="video/mp4"/>
-        </video>
-         </div>
-        </div>
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
@@ -322,16 +315,6 @@ function startprun(){
     document.getElementById("urlf").href = url;
 }
 localStorage.removeItem("data");
-$(function () {
-  $('#vidBox').css('display','block');
-               $('#vidBox').VideoPopUp({
-                	backgroundColor: "#17212a",
-                	opener: "video1 #video2",
-                    maxweight: "340",
-                    idvideo: "v1",
-	pausevideo:true
-                });
-            });
 	</script>
 </div>
 </html>
