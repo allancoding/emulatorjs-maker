@@ -69,10 +69,10 @@ let params = new URLSearchParams(location.search);
     if(params.get('data') === null){
         alert("Error!: Game is not found!");
     }else if(params.get('idata') === null){
-        var romdata = "https://allancoding.000webhostapp.com/app/emulatorjs/download.php?url="+params.get('data');
+        var romdata = "https://000webhostapp.allancoding.ga/app/emulatorjs/download.php?url="+params.get('data');
      EJS_gameUrl = romdata; // Url to Game rom
     }else{
-      var romdata1 = "https://allancoding.github.io/emulatorjs/files/"+params.get('data');
+      var romdata1 = "https://allancoding.github.io/emulatorjs-maker/files/"+params.get('data');
      EJS_gameUrl = romdata1; // Url to Game rom
     }
     if(params.get('id') === null){
@@ -95,7 +95,7 @@ let params = new URLSearchParams(location.search);
     }
     if(params.get('img') === null || params.get('iurl') == 'false'){
         var sheet = window.document.styleSheets[0];
-sheet.insertRule('.backg{ background-image :url("https://allancoding.github.io/emulatorjs/emulator/img/icon.png") !important; }', sheet.cssRules.length);
+sheet.insertRule('.backg{ background-image :url("https://allancoding.github.io/emulatorjs-maker/emulator/img/icon.png") !important; }', sheet.cssRules.length);
     }else if(params.get('iurl') == 'true'){
      var sheet = window.document.styleSheets[0];
 sheet.insertRule('.backg{ background-image :url("'+params.get('img')+'") !important; }', sheet.cssRules.length);
