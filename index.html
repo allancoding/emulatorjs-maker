@@ -274,7 +274,7 @@ var eventMethod = window.addEventListener
  eventer(messageEvent, function (e) {
   // Get the sent data
     var decoded = JSON.parse(e.data);
-    var urlid = "https://allancoding.000webhostapp.com/app/emulatorjs/download.php?url=" + decoded.ids;
+    var urlid = "https://000webhostapp.allancoding.ga/app/emulatorjs/download.php?url=" + decoded.ids;
     localStorage.setItem("data", decoded.ids);
  });
 function startprun(){
@@ -316,7 +316,7 @@ function startprun(){
         location.reload();
     }
     var name = document.getElementById("name").value;
-    var url = "https://allancoding.github.io/emulatorjs/play.html?id="+id5+"&core="+core+"&data="+data+"&button=Start Game&img=0&name="+name+"&iurl="+imgi;
+    var url = "https://allancoding.github.io/emulatorjs-maker/play.html?id="+id5+"&core="+core+"&data="+data+"&button=Start Game&img=0&name="+name+"&iurl="+imgi;
     console.log(url);
     document.getElementById("urlf").innerHTML = url;
     document.getElementById("urlf").href = url;
