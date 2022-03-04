@@ -1,4 +1,4 @@
-# Emulatorjs
+# EmulatorJS Game Maker!
 
 ---
 ## <span style="color: red;">*These are the things that were change*d from: https://github.com/ethanaobrien/emulatorjs</span>
