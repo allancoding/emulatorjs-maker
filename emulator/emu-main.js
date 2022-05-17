@@ -5564,7 +5564,7 @@ window.EJS_main = function(_0xa88a13, _0x17edbf, _0x2c1832) {
                                 _0x14264d.appendChild(_0x428003('a', {
                                     'target': '_blank',
                                     'href': 'https://github.com/ethanaobrien/emulatorjs'
-                                }, 'EmulatorJS v' .concat(this.version)));
+                                }, 'EmulatorJS @allancoding v' .concat(this.version)));
                                 _0x2a1dda.appendChild(_0x14264d);
                                 _0x2a1dda.setAttribute('menu', '');
                             }
