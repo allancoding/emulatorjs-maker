@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <input type="file" name="file" id="file" onchange="showname()"/>
+  <label for="file" class="custom-file-upload"> Choose File
+  </label><a id="filename"></a>
+<input name="file11" type='button' value='Upload'/>
+  <label for="file11" class="custom-file-upload" onclick="uploadFile();getFiles();">
+    <i class="fa fa-cloud-upload"></i> Upload
+</label><br>
+  <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+  <h3 id="status"></h3>
+  <p id="loaded_n_total">Email Me <a target="_blank" href = "mailto:60013695@ironschools.org?subject=File May Be To Big&body=Here is the ROM. Upload it here!">here</a> if it does not work.</p>
+<style>
+input[type="file"] {
+    display: none;
+}
+input[type="button"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+</style>
+<script>
+function showname() {
+      var name = document.getElementById("file"); 
+      var name1 = document.getElementById("filename"); 
+      var name2 = " " + name.files.item(0).name;
+   name1.innerHTML = truncateText(name2, 20);
+    };
+function truncateText(text, length) {
+  if (text.length <= length) {
+    return text;
+  }
+
+  return text.substr(0, length) + '\u2026'
+}
+function _(el) {
+  return document.getElementById(el);
+}
+
+function uploadFile() {
+  var file = _("file").files[0];
+   //alert(file.name+" | "+file.size+" | "+file.type);
+  var formdata = new FormData();
+  formdata.append("file", file);
+  var ajax = new XMLHttpRequest();
+  ajax.upload.addEventListener("progress", progressHandler, false);
+  ajax.addEventListener("error", errorHandler, false);
+  ajax.addEventListener("abort", abortHandler, false);
+  ajax.open("POST", "");
+  ajax.send(formdata);
+}
+
+function progressHandler(event) {
+  var percent = (event.loaded / event.total) * 100;
+  _("progressBar").value = Math.round(percent);
+  _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+}
+
+function completeHandler(event) {
+  _("status").innerHTML = "Successfully Uploaded!";
+  _("progressBar").value = 0; //wil clear progress bar after successful upload
+}
+
+function errorHandler(event) {
+  _("status").innerHTML = "Upload Failed: File may be to large!";
+}
+
+function abortHandler(event) {
+  _("status").innerHTML = "Upload Aborted";
+}
+function getFiles() {
+  const f = document.getElementById('file');
+  [...f.files].forEach((file, i) => {
+    const fr = new FileReader();
+    fr.onload = (e) => {
+      const data = e.target.result.split(",");
+      var xhr3 = new XMLHttpRequest();
+ xhr3.onreadystatechange = function() {
+    if (xhr3.readyState === 4) {
+      callback(xhr3.response);
+    }
+  }
+  xhr2 = new XMLHttpRequest();
+  xhr2.open("POST", "upload.php", true);
+  xhr2.setRequestHeader('Content-Type', 'application/json');
+  xhr2.send(JSON.stringify({
+    fileName: f.files[i].name,
+    mimeType: data[0].match(/:(\w.+);/)[1],
+    data: data[1]
+}));
+xhr2.onreadystatechange = function() {
+    if (xhr2.readyState === 4) {
+      console.log(xhr2.response);
+        const message = JSON.stringify({
+    ids: xhr2.response,
+});
+completeHandler();
+window.parent.parent.parent.postMessage(message, '*');
+    }
+  }
+    }
+    fr.readAsDataURL(file);
+  });
+}
+</script>

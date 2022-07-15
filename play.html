@@ -60,19 +60,27 @@
     <button id="helpp" onclick="$('#myModal').modal();" class="bot"><i class="fa fa-share"></i></button>
     </div>
 </div>
-<div style="width:100%;hight:100%;">
+<div style="width:100%;height:100%;">
         <div id="game"></div>
       </div>
 <script type="text/javascript">
+  $.getJSON('config.json', function(data) {
+      localStorage.setItem("customserver", data.customserver);        
+});
 let params = new URLSearchParams(location.search);
     EJS_player = '#game';
     if(params.get('data') === null){
         alert("Error!: Game is not found!");
     }else if(params.get('idata') === null){
-        var romdata = "https://000webhostapp.allancoding.ga/app/emulatorjs/download.php?url="+params.get('data');
+      var cusser = localStorage.getItem("customserver"); 
+      if(cusser == false){
+        var romdata =  "https://000webhostapp.allancoding.ga/app/emulatorjs/download.php?url="+params.get('data');
+      }else if(cusser == true){
+        var romdata =  "get.php?url="+params.get('data');
+      } 
      EJS_gameUrl = romdata; // Url to Game rom
     }else{
-      var romdata1 = "https://allancoding.github.io/emulatorjs-maker/files/"+params.get('data');
+      var romdata1 = "https://allancoding.github.io/emulatorjs-maker/gamefiles/"+params.get('data');
      EJS_gameUrl = romdata1; // Url to Game rom
     }
     if(params.get('id') === null){
@@ -95,7 +103,7 @@ let params = new URLSearchParams(location.search);
     }
     if(params.get('img') === null || params.get('iurl') == 'false'){
         var sheet = window.document.styleSheets[0];
-sheet.insertRule('.backg{ background-image :url("https://allancoding.github.io/emulatorjs-maker/emulator/img/icon.png") !important; }', sheet.cssRules.length);
+sheet.insertRule('.backg{ background-image :url("emulator/img/icon.png") !important; }', sheet.cssRules.length);
     }else if(params.get('iurl') == 'true'){
      var sheet = window.document.styleSheets[0];
 sheet.insertRule('.backg{ background-image :url("'+params.get('img')+'") !important; }', sheet.cssRules.length);
